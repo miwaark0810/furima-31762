@@ -20,9 +20,11 @@ class Item < ApplicationRecord
     greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range'
   }
 
-  validates :category_id, numericality: { other_than: 1, message: 'Select' }
-  validates :status_id, numericality: { other_than: 1, message: 'Select' }
-  validates :shipping_fee_id, numericality: { other_than: 1, message: 'Select' }
+  with_options numericality: { other_than: 1, message: 'Select' } do
+    validates :category_id
+    validates :status_id
+    validates :shipping_fee_id
+    validates :shipping_time_id
+  end
   validates :prefecture_id, numericality: { other_than: 0, message: 'Select' }
-  validates :shipping_time_id, numericality: { other_than: 1, message: 'Select' }
 end
