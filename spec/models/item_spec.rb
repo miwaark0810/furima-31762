@@ -64,18 +64,6 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Category Select')
     end
 
-    it 'status_idが空では登録できないこと' do
-      @item.status_id = nil
-      @item.valid?
-      expect(@item.errors.full_messages).to include('Status Select')
-    end
-
-    it 'status_idが1では登録できないこと' do
-      @item.status_id = 1
-      @item.valid?
-      expect(@item.errors.full_messages).to include('Status Select')
-    end
-
     it 'shipping_fee_idが空では登録できないこと' do
       @item.shipping_fee_id = nil
       @item.valid?
